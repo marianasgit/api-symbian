@@ -43,16 +43,20 @@ router.get('/listOatient/:id_patient', (req, res) => {
 
 router.post('/registerPatient', (req, res) => {
 
-    let {name, picture, telephone_number, cellphone_number, email, responsible_name, responsible_telephone} = req.body;
+    console.log('teste backend');
+
+    console.log(req.body);
+
+    let {name, telephone, phone, email, emergencyContactName, emergencyContactNumber, password} = req.body;
 
     patientModel.create({
-        name: 
-        picture,
-        telephone_number, 
-        cellphone_number, 
+        name,
+        telephone, 
+        phone, 
         email, 
-        responsible_name, 
-        responsible_telephone
+        emergencyContactName, 
+        emergencyContactNumber,
+        password
 
     }).then(
         () => {
@@ -72,12 +76,12 @@ router.put('/editPatient', (req, res) => {
     patientModel.update(
         {
             name,
-            picture,
-            telephone_number, 
-            cellphone_number, 
+            telephone, 
+            phone, 
             email, 
-            responsible_name, 
-            responsible_telephone
+            emergencyContactName, 
+            emergencyContactNumber,
+            password
         },
         {where: {patient_id}}
     )
